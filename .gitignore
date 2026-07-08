@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Local data and generated artifacts
+data/
+outputs/
+runs/
+checkpoints/
+artifacts/
+wandb/
+tensorboard/
+tb_logs/
+logs/
+*.log
+*.out
+*.err
+nohup.out
+tmux-*.log
+slurm-*.out
+slurm-*.err
+*.npz
+*.npy
+*.pt
+*.pth
+*.ckpt
+*.csv.tmp
+*.obj
+*.ply
+*.off
+*.stl
+*.tif
+*.tiff
+
+# Local machine/user configs
+configs/local/
+configs/local/**
+configs/local*.yaml
+configs/*_local.yaml
+configs/**/local*.yaml
+configs/**/*_local.yaml
+.env
+.env.*
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/

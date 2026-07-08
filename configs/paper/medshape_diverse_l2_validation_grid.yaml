@@ -1,0 +1,38 @@
+experiment: medshape_diverse_sdf_l2_validation_grid
+seed: 13
+
+data:
+  synset: medshape
+  mesh_layout: class_subdirs
+  mesh_root: data/raw/medshape_diverse
+  sdf_root: data/sdf/medshape_diverse
+  split_file: data/splits/medshape_diverse.json
+
+artifacts:
+  deepsdf_checkpoint: outputs/paper/medshape_diverse/deepsdf/deepsdf_final.pt
+
+deepsdf:
+  sdf_clamp: 0.1
+
+sparse_sweep:
+  split: val
+  steps: [0, 25, 50, 100, 250, 500, 1000]
+  observation_points: 16
+  eval_points: 8192
+  lr: 0.01
+  lambda_l2: 0.0001
+  lambda_conditional_energy: 0.0
+  repeats: 3
+  variants:
+    - name: no_prior
+      method: no_prior
+      lambda_l2: 0.0
+    - name: l2_lam_1e_5
+      method: l2
+      lambda_l2: 0.00001
+    - name: l2_lam_1e_4
+      method: l2
+      lambda_l2: 0.0001
+    - name: l2_lam_1e_3
+      method: l2
+      lambda_l2: 0.001

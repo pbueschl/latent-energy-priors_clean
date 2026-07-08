@@ -1,0 +1,37 @@
+experiment: medshape_diverse_sdf_6x250
+seed: 13
+
+data:
+  synset: medshape_diverse
+  mesh_layout: class_subdirs
+  mesh_root: data/raw/medshape_diverse
+  sdf_root: data/sdf/medshape_diverse
+  split_file: data/splits/medshape_diverse.json
+  manifest_csv: data/manifests/medshape_diverse.csv
+
+preprocess:
+  samples: 50000
+  surface_samples: 50000
+  bbox_scale: 1.15
+  sdf_clip: 0.1
+
+deepsdf:
+  latent_dim: 128
+  hidden_dim: 512
+  num_layers: 8
+  skip_layers: [4]
+  activation: relu
+  latent_init_std: 0.01
+  sdf_clamp: 0.1
+  batch_shapes: 128
+  samples_per_shape: 4096
+  num_workers: 0
+  epochs: 2000
+  lr_decoder: 0.0005
+  lr_latents: 0.001
+  latent_regularizer: l2
+  latent_l2_weight: 0.0001
+  latent_hinge_radius: 1.0
+  latent_noise_std: 0.0
+  latent_dropout_p: 0.0
+  save_every: 100

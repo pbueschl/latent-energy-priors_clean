@@ -1,0 +1,38 @@
+experiment: medshape_diverse_sdf_conditional_energy_v2
+seed: 13
+
+data:
+  sdf_root: data/sdf/medshape_diverse
+  split_file: data/splits/medshape_diverse.json
+
+artifacts:
+  deepsdf_checkpoint: outputs/paper/medshape_diverse/deepsdf/deepsdf_final.pt
+
+conditional_energy:
+  standardize_eps: 0.000001
+  observation_points: [16, 64, 128]
+  point_hidden_size: 128
+  context_dim: 128
+  context_hidden_size: 128
+  observation_pooling: mean_max_logn
+  logn_reference_points: 128
+  hidden_dim: 256
+  num_layers: 4
+  lr: 0.0005
+  weight_decay: 0.000001
+  batch_size: 512
+  epochs: 5000
+  ot_weight: 1.0
+  rank_weight: 1.0
+  rank_margin: 1.0
+  rank_context_weight: 1.0
+  langevin_weight: 1.0
+  langevin_margin: 10.0
+  langevin_steps: 20
+  langevin_step_size: 0.001
+  langevin_noise_scale: 1.0
+  energy_l2_weight: 0.00001
+  negative_noise_scales: [1.0, 3.0, 6.0, 10.0]
+  negative_data_noise: 0.5
+  negative_clamp_norm: 150.0
+  min_negative_train_distance: 2.0
